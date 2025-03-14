@@ -1,0 +1,269 @@
+html, body {
+    height:100%;
+    font-family: Arial, sans-serif;
+    
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    padding: 0px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+}
+.navbar .cart-icon {
+  margin-left: auto;  /* pushes this item to far right in flex container */
+}
+.navbar .right {
+  margin-left: auto;  /* pushes this item to far right in flex container */
+}
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    vertical-align: center;
+    background-color: #D3D3D3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+ul {    
+    margin: 0;
+    padding: 0;
+    overflow: auto;  ;
+}   
+li center {
+    text-align: center!important;
+}
+nav {
+    background-color: #634E99;
+    color: white;
+    margin: 20px 0;
+}
+
+nav a {
+    background-color: #634E99;    
+    text-emphasis-color: white;
+    margin: 0 15px;
+}
+
+.click:hover {
+    text-decoration: underline !important;
+    font-weight: bolder !important;
+    color: #155EBC !important;
+}
+.navbar-title {
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none !important;
+    color: white !important;    
+}
+
+.banner{
+    background-color: #001F3F;
+}
+.banner img {
+    padding: 0px;
+    margin: 0px;
+    height: auto;  /* maintain aspect ratio */
+    width: 20%;
+  }
+.gallery {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center;  /* centers the grid items horizontally */
+    align-content: center;    /* centers the grid items vertically */
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 5px;
+}
+:right{
+    display: flex;
+    content: right;
+    justify-content: center;
+    align-items: right;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #001F3F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.navbar{    
+    width: 100%;
+    height:100%;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+      
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    background-color: #634E99;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.navbar-nav .nav-link img {
+    width: max-content;
+    height: max-content;
+    
+}
+.signup-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Increased width */
+    margin: auto;
+}
+.signup-form label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+.signup-form input, .signup-form select, .signup-form textarea {
+    width: calc(100% - 170px);
+    display: inline-block;
+}
+.signup-form input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px; /* Reduced margin to bring checkbox closer to label */
+}
+.signup-form div {
+    margin-bottom: 10px;
+}
+.signup-form .form-row {
+    display: flex;
+    justify-content: space-between;
+}
+.signup-form .form-row > div {
+    flex: 1;
+    margin-right: 10px;
+}
+.signup-form .form-row > div:last-child {
+    margin-right: 0;
+}
+.signup-form select[style="width: auto;"] {
+    width: auto; /* Ensure dropdowns are reduced in width */
+}
+.checkbox-container {
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox-column {
+    display: flex;
+    flex-direction: column;
+}
+.checkbox-column div {
+    margin-bottom: 5px; /* Reduced vertical margin between checkboxes */
+}
+.checkbox-column label {
+    text-align: left; /* Left-align the labels for checkboxes */
+}
+.thank-you-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.testimonials {
+    background-color: #f9f9f9;
+    padding: 10px; /* Reduced padding to bring testimonials closer */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    margin-bottom: 10px; /* Reduced margin to bring testimonials closer */
+}
+
+.testimonial {
+    margin-bottom: 10px; /* Reduced margin to bring testimonials closer */
+}
+
+.testimonial-img {
+    border-radius: 50%;
+    width: 80px; /* Reduced size to bring testimonials closer */
+    height: 80px; /* Reduced size to bring testimonials closer */
+    object-fit: cover;
+    margin-bottom: 5px; /* Reduced margin to bring testimonials closer */
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px; /* Reduced gap to bring testimonials closer */
+}
+
+.signup-form-container {
+    flex: 1;
+}
+
+.testimonials.left, .testimonials.right {
+    flex: 0 0 150px; /* Reduced width to bring testimonials closer */
+}
+
+.testimonials.below {
+    margin-top: 10px; /* Reduced margin to bring testimonials closer */
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-summary {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.cart-summary p {
+    margin: 2px 0;
+}
+
+.button-buy, .button-enroll {
+    background-color: #634E99;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button-buy:hover, .button-enroll:hover {
+    background-color: #4b3a7a;
+    
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
