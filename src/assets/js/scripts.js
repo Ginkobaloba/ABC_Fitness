@@ -29,7 +29,7 @@ function displayCart() {
             let li = document.createElement('li');
             li.className = 'list-group-item d-flex justify-content-between align-items-center';
             li.innerHTML = `
-                <img src="../assets/images/${cartItem.image}" alt="${cartItem.item}" class="cart-item-img">
+                <img src="src/assets/images/${cartItem.image}" alt="${cartItem.item}" class="cart-item-img">
                 ${cartItem.item} - $${cartItem.price}
                 <div>
                     <input type="number" value="${cartItem.quantity || 1}" min="1" class="form-control form-control-sm" style="width: 60px; display: inline-block;" onchange="updateCartItem(${index}, this.value)">
@@ -119,7 +119,7 @@ function openCartModal() {
         total += item.price * item.qty;
         cartListDiv.innerHTML += `
             <div class="cart-item">
-                <img src="../assets/images/${item.image}" alt="${item.name}" class="cart-item-img">
+                <img src="src/assets/images/${item.image}" alt="${item.name}" class="cart-item-img">
                 <span class="item-name">${item.image}</span>
                 <span class="item-qty">x${item.qty}</span>
                 <span class="item-price">$${item.price * item.qty}</span>
