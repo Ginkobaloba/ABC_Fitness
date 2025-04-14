@@ -35,6 +35,11 @@
     </nav>
 </header>
 
+<script>
+// Ensure cart is empty on every page load for default state
+sessionStorage.removeItem('cart');
+</script>
+
 <!-- Cart Modal -->
 <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
