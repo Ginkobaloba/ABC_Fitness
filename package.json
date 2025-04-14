@@ -15,7 +15,7 @@
     "gallery",
     "signup"
   ],
-  "author": "Your Name",
+  "author": "Drew Mattick",
   "license": "ISC",
   "devDependencies": {
     "live-server": "^1.2.0"
