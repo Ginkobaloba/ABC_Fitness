@@ -36,28 +36,28 @@
 </header>
 
 <!-- Cart Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-3">
-        <div class="modal-header" style="background-color: #634E99; color: white;">
-          <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="cartModal" style="display:none;" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3">
+      <div class="modal-header" style="background-color: #634E99; color: white;">
+        <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+        <button type="button" class="btn-close" aria-label="Close" onclick="closeCartModal()"></button>
+      </div>
+      <div class="modal-body">
+        <ul id="cart-items" class="list-group">
+          <!-- Cart items will be dynamically added here -->
+        </ul>
+        <div id="cart-summary" class="cart-summary" style="display: none;">
+          <p id="cart-subtotal">Subtotal: $0.00</p>
+          <p id="cart-tax">Tax (0.051%): $0.00</p>
+          <p id="cart-total">Total: $0.00</p>
         </div>
-        <div class="modal-body">
-          <ul id="cart-items" class="list-group">
-            <!-- Cart items will be dynamically added here -->
-          </ul>
-          <div id="cart-summary" class="cart-summary" style="display: none;">
-            <p id="cart-subtotal">Subtotal: $0.00</p>
-            <p id="cart-tax">Tax (0.051%): $0.00</p>
-            <p id="cart-total">Total: $0.00</p>
-          </div>
-          <p id="cart-empty" style="display: none;">Cart is empty</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
-          <button type="button" class="btn btn-primary" onclick="checkout()" id="checkoutBtn">Checkout</button>
-        </div>
+        <p id="cart-empty" style="display: block;">Cart is empty</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeBtn" onclick="closeCartModal()">Close</button>
+        <button type="button" class="btn btn-primary" onclick="checkout()" id="checkoutBtn">Checkout</button>
       </div>
     </div>
   </div>
+</div>
