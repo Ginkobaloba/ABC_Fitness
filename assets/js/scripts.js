@@ -50,7 +50,7 @@ function displayCart() {
                     <button class="btn btn-danger btn-sm" onclick="removeCartItem(${index})">Remove</button>
                 </div>
             `;
-            if(cartItems){cartItems.appendChild(li);};        
+            if(cartItems){cartItems.appendChild(li);};    
             subtotal += cartItem.price * (cartItem.quantity || 1);
         });
         let tax = subtotal * 0.051;
@@ -102,13 +102,27 @@ function displaySchedule() {
 document.addEventListener("DOMContentLoaded", function() {
     displayCart();
     //displaySchedule();
+
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.style.display = 'block';
+        cartModal.classList.add('show');
+        cartModal.setAttribute('aria-modal', 'true');
+        cartModal.removeAttribute('aria-hidden');
+        document.body.classList.add('modal-open');
+
+        cartModal.addEventListener('click', function(event) {
+            // Only close if click is directly on the modal background, not inside modal-dialog
+            if (event.target === cartModal) {
+                closeCartModal();
+            }
+        });
+    }
 });
 
 document.querySelectorAll('.modal .close').forEach(btn => {
     btn.onclick = function() {
-        const modal = this.closest('.modal');
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
+        closeCartModal();
     };
 });
 
@@ -117,8 +131,7 @@ window.onclick = function(event) {
     const modals = document.querySelectorAll('.modal');
     modals.forEach(modal => {
         if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
+            closeCartModal();
         }
     });
 };
@@ -129,7 +142,7 @@ function openCartModal() {
     cartListDiv.innerHTML = "";
     let total = 0;
 
-    cartItems.forEach(item => {     
+    cartItems.forEach(item => {      
         total += item.price * item.qty;
         cartListDiv.innerHTML += `
             <div class="cart-item">
@@ -141,8 +154,14 @@ function openCartModal() {
     });
 
     document.getElementById('cart-total').innerText = "Total: $" + total.toFixed(2);
-    const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-    cartModal.show();
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.style.display = 'block';
+        cartModal.classList.add('show');
+        cartModal.setAttribute('aria-modal', 'true');
+        cartModal.removeAttribute('aria-hidden');
+        document.body.classList.add('modal-open');
+    }
 }
 
 function handleSubmit(event) {
@@ -152,18 +171,35 @@ function handleSubmit(event) {
     form.querySelectorAll('input, select, button').forEach(input => input.disabled = true);
     thankYouMessage.style.display = 'block';
 }
-
 if(document.getElementById('checkoutBtn')){
-    document.getElementById('checkoutBtn').onclick = function() {
-        const cartListDiv = document.getElementById('cart-items');
-        cartListDiv.innerHTML = "<p>Thank you for your purchase!</p>";
-        document.getElementById('cart-total').innerText = "";
-        sessionStorage.clear();
-        this.disabled = true;
-    };}
+document.getElementById('checkoutBtn').onclick = function() {
+    const cartListDiv = document.getElementById('cart-items');
+    cartListDiv.innerHTML = "<p>Thank you for your purchase!</p>";
+    document.getElementById('cart-total').innerText = "";
+    sessionStorage.clear();
+    this.disabled = true;
+};}
 
 document.querySelectorAll('.class-item').forEach(item => {
     item.addEventListener('click', () => {
         item.classList.toggle('show-details');
     });
 });
+
+function closeCartModal() {
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.style.display = 'none';
+        cartModal.classList.remove('show');
+        cartModal.removeAttribute('aria-modal');
+        cartModal.setAttribute('aria-hidden', 'true');
+    }
+    // Remove modal-open class and restore scroll
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    // Remove any modal backdrop if present
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+        backdrop.parentNode.removeChild(backdrop);
+    }
+}
