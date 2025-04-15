@@ -1,6 +1,17 @@
 function addToCart(item, price, image) {
     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    cart.push({ item, price, image });
+    // Check if item already exists in cart
+    let found = false;
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].item === item && cart[i].image === image) {
+            cart[i].quantity = (cart[i].quantity || 1) + 1;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cart.push({ item, price, image, quantity: 1 });
+    }
     sessionStorage.setItem('cart', JSON.stringify(cart));
     displayCart();
 }
