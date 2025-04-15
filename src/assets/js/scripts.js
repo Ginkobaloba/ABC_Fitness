@@ -91,6 +91,15 @@ function displaySchedule() {
 document.addEventListener("DOMContentLoaded", function() {
     displayCart();
     //displaySchedule();
+
+    const cartModal = document.getElementById('cartModal');
+if (cartModal) {
+    cartModal.style.display = 'block';
+    cartModal.classList.add('show');
+    cartModal.setAttribute('aria-modal', 'true');
+    cartModal.removeAttribute('aria-hidden');
+    document.body.classList.add('modal-open');
+}
 });
 
 document.querySelectorAll('.modal .close').forEach(btn => {
@@ -155,3 +164,21 @@ document.querySelectorAll('.class-item').forEach(item => {
         item.classList.toggle('show-details');
     });
 });
+
+function closeCartModal() {
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.style.display = 'none';
+        cartModal.classList.remove('show');
+        cartModal.removeAttribute('aria-modal');
+        cartModal.setAttribute('aria-hidden', 'true');
+    }
+    // Remove modal-open class and restore scroll
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    // Remove any modal backdrop if present
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+        backdrop.parentNode.removeChild(backdrop);
+    }
+}
