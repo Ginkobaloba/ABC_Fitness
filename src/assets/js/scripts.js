@@ -104,20 +104,25 @@ document.addEventListener("DOMContentLoaded", function() {
     //displaySchedule();
 
     const cartModal = document.getElementById('cartModal');
-if (cartModal) {
-    cartModal.style.display = 'block';
-    cartModal.classList.add('show');
-    cartModal.setAttribute('aria-modal', 'true');
-    cartModal.removeAttribute('aria-hidden');
-    document.body.classList.add('modal-open');
-}
+    if (cartModal) {
+        cartModal.style.display = 'block';
+        cartModal.classList.add('show');
+        cartModal.setAttribute('aria-modal', 'true');
+        cartModal.removeAttribute('aria-hidden');
+        document.body.classList.add('modal-open');
+
+        cartModal.addEventListener('click', function(event) {
+            // Only close if click is directly on the modal background, not inside modal-dialog
+            if (event.target === cartModal) {
+                closeCartModal();
+            }
+        });
+    }
 });
 
 document.querySelectorAll('.modal .close').forEach(btn => {
     btn.onclick = function() {
-        const modal = this.closest('.modal');
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
+        closeCartModal();
     };
 });
 
@@ -126,8 +131,7 @@ window.onclick = function(event) {
     const modals = document.querySelectorAll('.modal');
     modals.forEach(modal => {
         if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
+            closeCartModal();
         }
     });
 };
@@ -150,8 +154,14 @@ function openCartModal() {
     });
 
     document.getElementById('cart-total').innerText = "Total: $" + total.toFixed(2);
-    const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-    cartModal.show();
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.style.display = 'block';
+        cartModal.classList.add('show');
+        cartModal.setAttribute('aria-modal', 'true');
+        cartModal.removeAttribute('aria-hidden');
+        document.body.classList.add('modal-open');
+    }
 }
 
 function handleSubmit(event) {
