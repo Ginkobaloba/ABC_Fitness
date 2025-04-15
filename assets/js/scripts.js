@@ -119,7 +119,7 @@ function openCartModal() {
         total += item.price * item.qty;
         cartListDiv.innerHTML += `
             <div class="cart-item">
-                <img src="src/assets/Images/${item.image}" alt="${item.name}" class="cart-item-img">
+                <img src="https://raw.githubusercontent.com/Ginkobaloba/ABC_Fitness/main/assets/Images/${item.image}" alt="${item.name}" class="cart-item-img">
                 <span class="item-name">${item.image}</span>
                 <span class="item-qty">x${item.qty}</span>
                 <span class="item-price">$${item.price * item.qty}</span>
