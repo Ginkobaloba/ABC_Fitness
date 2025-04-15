@@ -25,7 +25,7 @@
                 </ul>
                 <ul class="navbar-nav right">
                     <li class="nav-item">
-                        <a class="nav-link click" type="button" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        <a class="nav-link click" type="button" onclick="openCartModal()">
                             View Cart  <i class="bi bi-cart"></i>
                         </a>
                     </li>
@@ -35,12 +35,12 @@
     </nav>
 </header>
 <!-- Cart Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+<div class="modal fade" id="cartModal" style="display:none;" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-3">
         <div class="modal-header" style="background-color: #634E99; color: white;">
           <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" aria-label="Close" onclick="closeCartModal()"></button>
         </div>
         <div class="modal-body">
           <ul id="cart-items" class="list-group">
@@ -54,7 +54,7 @@
           <p id="cart-empty" style="display: block;">Cart is empty</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">Close</button>
+          <button type="button" class="btn btn-secondary" id="closeBtn" onclick="closeCartModal()">Close</button>
           <button type="button" class="btn btn-primary" onclick="checkout()" id="checkoutBtn">Checkout</button>
         </div>
       </div>
